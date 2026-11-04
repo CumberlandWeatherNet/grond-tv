@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>GROND CABLE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#1a1208;color:#f5e9c8;font-family:'Courier New',monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6vw;text-align:center}
+h1{font-size:8vw;color:#ff7a1a;text-shadow:.6vw .6vw 0 #19d3c5;letter-spacing:1vw;font-style:italic;margin-bottom:4vw}
+.sub{color:#9a8a6a;letter-spacing:.4vw;margin-bottom:6vw;font-size:4vw}
+.msg{color:#e8ddc0;font-size:4.4vw;line-height:2;margin-bottom:6vw}
+.msg b{color:#39ff7a}
+a.btn{display:block;background:#39ff7a;color:#0d0d0d;text-decoration:none;font-weight:bold;font-size:5.4vw;letter-spacing:.5vw;padding:4.5vw 8vw;border-radius:3vw;border:.8vw solid #0d0d0d;box-shadow:0 0 5vw #39ff7a;margin-bottom:4vw}
+a.ghost{background:#0d0d0d;color:#19d3c5;border-color:#19d3c5;box-shadow:none;font-size:4.6vw}
+.note{font-size:3.6vw;color:#9a8a6a;line-height:1.8;max-width:80vw}
+</style></head><body>
+<h1>GROND CABLE</h1>
+<div class="sub">THE HOUSE NETWORK · CH 01</div>
+<div class="msg" id="m">TUNING IN<span id="d">.</span></div>
+<a class="btn" id="watch" href="#">&#9654; WATCH IN BROWSER</a>
+<a class="btn ghost" href="grond-cable.apk">&#9660; DOWNLOAD THE APP</a>
+<div class="note">App installs on Android — it may ask to "allow installs from this source".<br>Already have the app? Just open <b>GROND CABLE</b> — it finds the channel itself.</div>
+<script>
+var dots=setInterval(function(){var d=document.getElementById('d');d.textContent=d.textContent.length>2?'.':d.textContent+'.';},400);
+fetch('current.json?'+Date.now()).then(function(r){return r.json()}).then(function(j){
+  clearInterval(dots);
+  document.getElementById('m').innerHTML='<b>SIGNAL FOUND</b>';
+  document.getElementById('watch').href=j.url+'/lori.html';
+}).catch(function(e){
+  clearInterval(dots);
+  document.getElementById('m').innerHTML='SIGNAL TROUBLE — TEXT TANNER';
+  document.getElementById('watch').style.display='none';
+});
+</script>
+</body></html>
